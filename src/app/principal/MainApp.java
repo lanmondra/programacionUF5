@@ -9,14 +9,7 @@ public class MainApp {
 
         GestionTienda gestionTienda = new GestionTienda();
         gestionTienda.iniciar();
-       
         
-//        Pedido pedido = new Pedido();
-//        pedido.leeProductos();
-//        pedido.añadir();
-        
-        
-      
     }
 
 }

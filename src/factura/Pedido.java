@@ -1,6 +1,6 @@
 package factura;
 
-import empleado.control.GestionaEmpleados;
+import empleado.control.GestionEmpleados;
 import empleado.dominio.Empleado;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,6 +12,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
+import producto.control.GestionProductos;
 import producto.dominio.Producto;
 import producto.vista.VistaProducto;
 
@@ -83,10 +84,10 @@ public class Pedido {
             }
 
         } catch (ParseException e) {
-            System.out.println("erro de formato" + archivoPorductos);
+            System.out.println("Error de formato en: " + archivoPorductos);
 
         } catch (IOException ex) {
-            System.out.println("error de lectuara" + archivoPorductos);
+            System.out.println("Error de lectura en: " + archivoPorductos);
 
         }
 
@@ -120,7 +121,7 @@ public class Pedido {
     public void añadir() {
 
         if (ProductList.size() > 0) {
-            System.out.println("No podemos agregar poductos");
+            System.err.println("No podemos agregar más poductos");
             Pedido();
 
         }
@@ -132,13 +133,14 @@ public class Pedido {
             boolean sigue = true;
             while (sigue) {
                 int codigoEntrada = 0;
-                System.out.println("\n************************************************");
+                System.out.println(Color.BLUE + "\n************************************************" + Color.DEFAULT);
                 for (Producto producto : listaCompletaDeProductosList) {
                     System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", producto.getCodigo(),
                             producto.getNombre(), producto.getDescripcion(), producto.getPrecio());
 
                 }
-                System.out.println("************************************************\n");
+                System.out.println(Color.BLUE + "************************************************\n" + Color.DEFAULT);
+
                 System.out.print("ENTRE EL CODIGO DEL PRODUCTO A COMPRAR:  ");
                 String newCodigo = scan.next();
 
@@ -253,13 +255,13 @@ public class Pedido {
                 aux = aux + this.ProductList.get(i).getPrecio();
 
             }
-            System.out.println("\n\n------------------------------------------------");
-            System.out.println(Color.GREEN + "Precio de la cesta : " + aux + " € " + Color.DEFAULT);
-            System.out.println("------------------------------------------------\n\n");
+            System.out.println(Color.DARK_BLUE + "\n\n------------------------------------------------" + Color.DEFAULT);
+            System.out.println("Precio de la cesta : " + aux + " € ");
+            System.out.println(Color.DARK_BLUE + "------------------------------------------------\n\n" + Color.DEFAULT);
             //System.out.println("\t\t" + aux + " €");
 
         } else {
-            System.out.println(Color.ERROR + "LA CESTA ESTA VACIA \n\n" + Color.DEFAULT);
+            System.out.println(Color.ERROR + "LA CESTA ESTA VACIA \n\n");
         }
         Pedido();
     }
@@ -270,21 +272,21 @@ public class Pedido {
             double aux = 0;
             System.out.println("\n\nFactura simplificada:");
 
-            System.out.println("----------------------------------------");
+            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
                 System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", this.ProductList.get(i).getCodigo(),
                         this.ProductList.get(i).getNombre(), this.ProductList.get(i).getDescripcion(), this.ProductList.get(i).getPrecio());
 
             }
 
-            System.out.println("----------------------------------------");
+            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
 
                 aux = aux + this.ProductList.get(i).getPrecio();
 
             }
 
-            System.out.println(Color.GREEN + "El precio TOTAL es: " + aux + "€" + Color.DEFAULT);
+            System.out.println("El precio TOTAL es: " + aux + "€");
 
             System.out.println("Atendido por: " + empleado.getNombre() + " " + empleado.getApellidos() + "\n\n");
         } else {

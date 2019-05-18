@@ -4,20 +4,20 @@ import java.util.Scanner;
 import tienda.control.MenuFactura;
 import tienda.control.MenuProductos;
 import util.Color;
-import static util.Color.BULE;
 import factura.*;
+import static util.Color.BLUE;
 
 public class VistaPedidos {
 
     public static MenuFactura opcionDesdeMenufactura() {
 
-        System.out.println("------------------------------------------");
-        System.out.println(BULE + "------------MENU PEDIDO------------------" + Color.DEFAULT);
+      
+        System.out.println(BLUE+"------------- MENU PEDIDO ----------------" + Color.DEFAULT);
         System.out.println("1.1 ._Añadir un producto a la cesta");
         System.out.println("1.2 ._Visualizar el precio total de la cesta");
         System.out.println("1.3 ._Imprimir factura");
         System.out.println("1.4 ._Terminar pedido");
-        System.out.println("------------------------------------------");
+        System.out.println(BLUE+"------------------------------------------"+Color.DEFAULT);
 
         int opcion = pedirOpcionEnRango(1, 4);
 

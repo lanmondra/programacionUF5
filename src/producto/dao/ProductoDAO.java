@@ -11,7 +11,5 @@ public interface ProductoDAO {
     boolean actualizarProducto(Producto producto); // Update
     
     
-    void addProduct(Producto newProduct);
-    double readTotalPrice();
-    void printInvoice(Empleado attendant);
+
 }

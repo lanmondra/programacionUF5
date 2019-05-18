@@ -17,19 +17,18 @@ import producto.dao.ProductoDAO;
 import producto.dao.ProductoDAOImp;
 import producto.dominio.Producto;
 import tienda.vista.VistaProductos;
+import util.Color;
 
-public class GestionaProductos {
+public class GestionProductos {
 
     Empleado empleadoAuten;
-
-   
 
     Scanner scan = new Scanner(System.in);
 
     String archivoPorduc = "src/File/archivoProducto.txt";
     private List<Producto> productos;
 
-    public GestionaProductos(Empleado empleadoLogado) {
+    public GestionProductos(Empleado empleadoLogado) {
 
         Path path = Paths.get(this.archivoPorduc);
 
@@ -91,7 +90,7 @@ public class GestionaProductos {
         return validProductCode;
     }
 
-    public void updateCode() {
+    public void actualizarCodigo() {
 
         int newProductCode = 0;
         boolean validNewProductCode = false;
@@ -108,33 +107,46 @@ public class GestionaProductos {
                 newProductCode = Integer.parseInt(newProductCodeString);
 
             } catch (NumberFormatException e) {
-                System.err.println("Error - solo se aceptan enteros\n");
+                System.err.println("El valor introducido no es un entero. Vuelva a intentarlo de nuevo.\n");
                 validFormat = false;
             }
 
             if (validFormat) {
                 if (esCodigoValido(newProductCode)) {
-                    System.out.println("\nValido !\n");
                     validNewProductCode = true;
                 } else {
-                    System.err.println("Error - Invalid Product Code\n");
+                    System.err.println("Código del producto inexistente\n");
                 }
             }
         }
-        System.out.println("entre el nuevo codigo");
 
-        int newCod = scan.nextInt();
+        boolean cambioCodigoProducto = true;
+        while (cambioCodigoProducto) {
 
-        var newProduct = new ProductoDAOImp();
-        newProduct.updateCode(newProductCode, newCod);
-        System.out.println("cambiado");
+            boolean codigoYaExistente = false;
+            System.out.println("Entre el nuevo codigo: ");
+            int newCod = scan.nextInt();
 
+            for (Producto producto : productos) {
+                if (newCod == producto.getCodigo()) {
+                    codigoYaExistente = true;
+                }
+            }
+            if (!codigoYaExistente) {
+                var newProduct = new ProductoDAOImp();
+                newProduct.updateCode(newProductCode, newCod);
+                System.out.println(Color.GREEN + "Cambiado exitosamente" + Color.DEFAULT);
+                cambioCodigoProducto = false;
+            } else {
+                System.err.println("El código introducido ya pertenece a otro producto.");
+            }
+        }
         //para volver a la pantalla de producto
         VistaProductos.opcionDesdeMenuProductos(empleadoAuten);
 
     }
 
-    public void updateName() {
+    public void actualizarNombre() {
 
         int newProductCode = 0;
         boolean validNewProductCode = false;
@@ -157,10 +169,10 @@ public class GestionaProductos {
 
             if (validFormat) {
                 if (esCodigoValido(newProductCode)) {
-                    System.out.println("\nValido !\n");
+
                     validNewProductCode = true;
                 } else {
-                    System.err.println("Error - Invalid Product Code\n");
+                    System.err.println("Código del producto inexistente\n");
                 }
             }
         }
@@ -170,14 +182,14 @@ public class GestionaProductos {
 
         var newProduct = new ProductoDAOImp();
         newProduct.updateName(newProductCode, newName);
-        System.out.println("cambiado");
+        System.out.println(Color.GREEN + "Nombre cambiado exitosamente" + Color.DEFAULT);
 
         //para volver a la pantalla de producto
         VistaProductos.opcionDesdeMenuProductos(empleadoAuten);
 
     }
 
-    public void updatePrice() {
+    public void actualizarPrecio() {
 
         int newProductCode = 0;
         boolean validNewProductCode = false;
@@ -200,10 +212,10 @@ public class GestionaProductos {
 
             if (validFormat) {
                 if (esCodigoValido(newProductCode)) {
-                    System.out.println("\nValido !\n");
+
                     validNewProductCode = true;
                 } else {
-                    System.err.println("Error - Invalid Product Code\n");
+                    System.err.println("Código del producto inexistente\n");
                 }
             }
         }
@@ -221,7 +233,7 @@ public class GestionaProductos {
         var newProduct = new ProductoDAOImp();
         newProduct.updatePrice(newProductCode, productPrice);
 
-        System.out.println("cambiado");
+        System.out.println(Color.GREEN + "Precio cambiado exitosamente" + Color.DEFAULT);
 
         //para volver a la pantalla de producto
         VistaProductos.opcionDesdeMenuProductos(empleadoAuten);
@@ -231,13 +243,13 @@ public class GestionaProductos {
     }
 
     void imprimirProductos() {
-        System.out.println("\n************************************************");
+        System.out.println(Color.BLUE + "\n************************************************"+Color.DEFAULT);
         for (Producto producto : productos) {
             System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", producto.getCodigo(),
                     producto.getNombre(), producto.getDescripcion(), producto.getPrecio());
 
         }
-        System.out.println("************************************************\n");
+        System.out.println(Color.BLUE + "************************************************\n"+Color.DEFAULT);
     }
 
 }

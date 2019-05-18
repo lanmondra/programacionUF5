@@ -3,7 +3,7 @@ package tienda.vista;
 import empleado.dominio.Empleado;
 import java.util.List;
 import java.util.Scanner;
-import producto.control.GestionaProductos;
+import producto.control.GestionProductos;
 import producto.dao.ProductoDAO;
 import producto.dominio.Producto;
 import tienda.control.GestionTienda;
@@ -20,14 +20,14 @@ public class VistaProductos {
 
     }
 
-    public  static MenuProductos opcionDesdeMenuProductos(Empleado empleado) {
+    public static MenuProductos opcionDesdeMenuProductos(Empleado empleado) {
         borrarPantalla();
-        System.out.println("--------Menú productos ------------");
+        System.out.println(Color.BLUE + "--------Menú productos ------------" + Color.DEFAULT);
         System.out.println("1.1 ._Modificar nombre de Producto");
         System.out.println("1.2 ._Modificar precio de Producto");
         System.out.println("1.3 ._Modificar codigo de Producto");
         System.out.println("1.4 ._Terminar ");
-        System.out.println("------------------------------------");
+        System.out.println(Color.BLUE + "------------------------------------" + Color.DEFAULT);
 
         int opcion = pedirOpcionEnRango(1, 4);
 
@@ -36,20 +36,20 @@ public class VistaProductos {
         switch (opcion) {
             case 1:
                 menu = MenuProductos.MODIFICAR_NOMBRE;
-                GestionaProductos g = new GestionaProductos(empleado);
-                g.updateName();
+                GestionProductos g = new GestionProductos(empleado);
+                g.actualizarNombre();
 
                 break;
             case 2:
                 menu = MenuProductos.MODIFICAR_PRECIO;
 
-                GestionaProductos gestiona = new GestionaProductos(empleado);
-                gestiona.updatePrice();
+                GestionProductos gestiona = new GestionProductos(empleado);
+                gestiona.actualizarPrecio();
                 break;
             case 3:
                 menu = MenuProductos.MODIFICAR_CODIGO;
-                GestionaProductos gestion = new GestionaProductos(empleado);
-                gestion.updateCode();
+                GestionProductos gestion = new GestionProductos(empleado);
+                gestion.actualizarCodigo();
                 break;
             case 4:
 //                menu = MenuProductos.SALIR;

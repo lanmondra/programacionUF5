@@ -1,6 +1,6 @@
 package producto.dao;
 
-import conexion.ConexionBD;
+
 import empleado.dominio.Empleado;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -24,39 +24,13 @@ public class ProductoDAOImp implements ProductoDAO {
 
     Scanner scan = new Scanner(System.in);
 
-    String archivoPorduc = "src/File/archivoProducto.txt";
+    String archivoProduc = "src/File/archivoProducto.txt";
 
-    // @Override
-    public List<Producto> leerProductoas() {
-        List<Producto> productos = new ArrayList<>();
-
-        String query = "SELECT * FROM productos";
-
-        try (
-                 var conexion = ConexionBD.conectar();  var sentencia = conexion.createStatement();  var resultado = sentencia.executeQuery(query);) {
-
-            // capturar los resultados
-            while (resultado.next()) {
-                var codigo = resultado.getInt("p_codigo");
-                var nombre = resultado.getString("p_nombre");
-                var descripcion = resultado.getString("p_descripcion");
-                var precio = resultado.getDouble("p_precio");
-
-                productos.add(new Producto(codigo, nombre, descripcion, precio));
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error al leer los productos en la base de datos "
-                    + this.getClass().getName());
-        }
-
-        return productos;
-    }
-
+    
     //@Override
     public ProductoDAOImp() {
 
-        Path path = Paths.get(this.archivoPorduc);
+        Path path = Paths.get(this.archivoProduc);
 
         List<Producto> productList = new ArrayList<Producto>();
 
@@ -98,48 +72,47 @@ public class ProductoDAOImp implements ProductoDAO {
 
         Producto Productos = new Producto();
         List<Producto> productoList = new ArrayList<>();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         NumberFormat formatoNumero = NumberFormat.getInstance(Locale.FRANCE);// 
         // dependiendo de la localidad es punto o coma
         Number numero;
         String liniaconDatos;
 
-        try ( var archivo = Files.newBufferedReader(Paths.get(archivoPorduc))) {
+        try ( var archivo = Files.newBufferedReader(Paths.get(archivoProduc))) {
 
             while (archivo.readLine() != null) {
-                // codigo
-                archivo.readLine();//saltar un 
+                
+                archivo.readLine();
                 liniaconDatos = archivo.readLine().trim();
                 numero = formatoNumero.parse(liniaconDatos);
                 int codigo = numero.intValue();
 
-                archivo.readLine();// salto
-                //coger el nombre
+                archivo.readLine();
+               
                 liniaconDatos = archivo.readLine().trim();
                 String nombre = liniaconDatos;
 
                 archivo.readLine();
-                // descripcion
+               
                 liniaconDatos = archivo.readLine().trim();
                 String descripcion = liniaconDatos;
 
-                archivo.readLine();//saltar un 
-                //precio
+                archivo.readLine();
+                
                 liniaconDatos = archivo.readLine().trim();
                 numero = formatoNumero.parse(liniaconDatos);
                 double precio = numero.doubleValue();
 
                 Productos = new Producto(codigo, nombre, descripcion, precio);
-                // productoList.add(Productos);
+              
                 productoList.add(new Producto(codigo, nombre, descripcion, precio));
 
             }
 
         } catch (ParseException e) {
-            System.out.println("erro de formato" + archivoPorduc);
+            System.out.println("Error de fromato en: " + archivoProduc);
 
         } catch (IOException ex) {
-            System.out.println("error de lectuara" + archivoPorduc);
+            System.out.println("Error de lectura en: " + archivoProduc);
 
         }
 
@@ -235,21 +208,6 @@ public class ProductoDAOImp implements ProductoDAO {
                     + "\n";
         }
         return productListString;
-    }
-
-    @Override
-    public void addProduct(Producto newProduct) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public double readTotalPrice() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void printInvoice(Empleado attendant) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

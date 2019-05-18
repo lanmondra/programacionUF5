@@ -9,12 +9,12 @@ public class VistaTienda {
 
    public static  MenuPrincipal opcionDesdeMenuPrincipal() {
         borrarPantalla();
-        System.out.println("--Menú principal -------------------");
+        System.out.println(Color.BLUE+"---------- Menú principal ----------"+Color.DEFAULT);
         System.out.println("   1. Hacer pedido");
         System.out.println("   2. Modificar producto");
         System.out.println("   3. Cambiar contraseña de empleado");
         System.out.println("   4. Cerrar sesión");
-        System.out.println("------------------------------------");
+        System.out.println(Color.BLUE+"------------------------------------"+Color.DEFAULT);
 
         int opcion = pedirOpcionEnRango(1, 4);
 

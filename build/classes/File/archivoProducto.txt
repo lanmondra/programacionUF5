@@ -2,7 +2,7 @@
  [codigo]
  222
  [nombre]
- Blue Baby
+ Gigabyte B450M DS3H
  [descripcion]
  Placa base GIGABYTE serie 400 con tecnología AMD StoreMI
  [precio]
