@@ -53,7 +53,7 @@ public class Pedido {
         Number numero;
         String liniaconDatos;
 
-        try (var archivo = Files.newBufferedReader(Paths.get(archivoPorductos))) {
+        try ( var archivo = Files.newBufferedReader(Paths.get(archivoPorductos))) {
 
             while (archivo.readLine() != null) {
                 // codigo
@@ -186,12 +186,12 @@ public class Pedido {
 
     }
 
-    private boolean Escodigovalido(int cod) {
+    private boolean Escodigovalido(int codigoEntrada) {
         boolean seguir = false;
         try {
 
             for (int i = 0; i < listaCompletaDeProductosList.size(); i++) {
-                if (listaCompletaDeProductosList.get(i).getCodigo() == cod) {
+                if (listaCompletaDeProductosList.get(i).getCodigo() == codigoEntrada) {
                     seguir = true;
 
                 }
@@ -200,7 +200,7 @@ public class Pedido {
         } catch (InputMismatchException e) {
             System.out.println("debe ser entero");
         } catch (Exception d) {
-            System.out.println("ahora");
+            // System.out.println("ahora");
 
         }
 
@@ -208,11 +208,11 @@ public class Pedido {
 
     }
 
-    private boolean noEstaEnCesta(int cod) {
+    private boolean noEstaEnCesta(int codigoEntrada) {
         boolean seguir = true;
 
         for (int i = 0; i < ProductList.size(); i++) {
-            if (cod == ProductList.get(i).getCodigo()) {
+            if (codigoEntrada == ProductList.get(i).getCodigo()) {
                 System.err.println("Producto Ya esta en la cesta");
                 seguir = false;
             }
@@ -255,13 +255,13 @@ public class Pedido {
                 aux = aux + this.ProductList.get(i).getPrecio();
 
             }
-            System.out.println(Color.DARK_BLUE + "\n\n------------------------------------------------" + Color.DEFAULT);
-            System.out.println("Precio de la cesta : " + aux + " € ");
-            System.out.println(Color.DARK_BLUE + "------------------------------------------------\n\n" + Color.DEFAULT);
+            System.out.println(Color.BLACK_BACKGROUND + "\n\n------------------------------------------------\n" + Color.DEFAULT);
+            System.out.println("Precio de la cesta : " + aux + " € \n");
+            System.out.println(Color.BLACK_BACKGROUND + "------------------------------------------------\n\n" + Color.DEFAULT);
             //System.out.println("\t\t" + aux + " €");
 
         } else {
-            System.out.println(Color.ERROR + "LA CESTA ESTA VACIA \n\n");
+            System.out.println(Color.ERROR + "LA CESTA ESTA VACIA \n\n" + Color.DEFAULT);
         }
         Pedido();
     }
@@ -272,14 +272,14 @@ public class Pedido {
             double aux = 0;
             System.out.println("\n\nFactura simplificada:");
 
-            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
+            System.out.println(Color.PURPLE + "----------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
                 System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", this.ProductList.get(i).getCodigo(),
                         this.ProductList.get(i).getNombre(), this.ProductList.get(i).getDescripcion(), this.ProductList.get(i).getPrecio());
 
             }
 
-            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
+            System.out.println(Color.PURPLE + "----------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
 
                 aux = aux + this.ProductList.get(i).getPrecio();

@@ -34,7 +34,7 @@ public class GestionProductos {
 
         List<Producto> productList = new ArrayList<Producto>();
 
-        try (var reader = Files.newBufferedReader(path)) {
+        try ( var reader = Files.newBufferedReader(path)) {
 
             int productCode = 0;
             String productName = null;
@@ -100,7 +100,7 @@ public class GestionProductos {
 
             validFormat = true;
             imprimirProductos();
-            System.out.print("Introduce el codigo: ");
+            System.out.print("Entre un codigo de un productos : ");
             String newProductCodeString = scan.nextLine();
 
             try {
@@ -156,7 +156,7 @@ public class GestionProductos {
 
             validFormat = true;
             imprimirProductos();
-            System.out.print("Introduce el codigo: ");
+            System.out.print("Entre un codigo de un productos : ");
             String newProductCodeString = scan.nextLine();
 
             try {
@@ -172,11 +172,11 @@ public class GestionProductos {
 
                     validNewProductCode = true;
                 } else {
-                    System.err.println("Código del producto inexistente\n");
+                    System.err.println("El codigo no existe \n");
                 }
             }
         }
-        System.out.println("entre el nuevo nombre ");
+        System.out.println("Entre el nuevo nombre ");
 
         String newName = scan.nextLine();
 
@@ -199,7 +199,7 @@ public class GestionProductos {
 
             validFormat = true;
             imprimirProductos();
-            System.out.print("Introduce el codigo: ");
+            System.out.print("Entre un codigo de un productos : ");
             String newProductCodeString = scan.nextLine();
 
             try {
@@ -243,13 +243,13 @@ public class GestionProductos {
     }
 
     void imprimirProductos() {
-        System.out.println(Color.BLUE + "\n************************************************"+Color.DEFAULT);
+        System.out.println(Color.BLUE + "\n************************************************" + Color.DEFAULT);
         for (Producto producto : productos) {
             System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", producto.getCodigo(),
                     producto.getNombre(), producto.getDescripcion(), producto.getPrecio());
 
         }
-        System.out.println(Color.BLUE + "************************************************\n"+Color.DEFAULT);
+        System.out.println(Color.BLUE + "************************************************\n" + Color.DEFAULT);
     }
 
 }

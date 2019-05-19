@@ -7,6 +7,9 @@ public enum Color {
     DEFAULT("\u001B[0m"),
     GREEN("\033[32;1m"),
     BLUE("\033[36m"),
+    PURPLE("\033[0;35m"),
+    BLUE_BACKGROUND("\033[44m"),
+    BLACK_BACKGROUND("\033[40m"),
     DARK_BLUE("\u001B[34m");
 
     String color;

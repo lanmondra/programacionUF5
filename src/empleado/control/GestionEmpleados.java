@@ -8,6 +8,7 @@ import empleado.errores.codigoError;
 import empleado.errores.passwordIncorrectException;
 import empleado.errores.userIncorrectException;
 import factura.Pedido;
+import util.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import tienda.control.GestionTienda;
@@ -106,7 +107,7 @@ public class GestionEmpleados {
             String passw = scan.next();
             if (esPasswordCorrecta(empleado, passw)) {
 
-                System.out.println("ha salido de la cuenta de " + empleado.getNombre() + "\n");
+                System.out.println(Color.GREEN + "ha salido de la cuenta de " + empleado.getNombre() + "\n" + Color.DEFAULT);
                 Pedido pedido = new Pedido();
                 pedido.vaciarArray();
                 sigue = false;
