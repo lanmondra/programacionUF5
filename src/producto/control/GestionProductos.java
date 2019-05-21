@@ -134,7 +134,7 @@ public class GestionProductos {
             }
             if (!codigoYaExistente) {
                 var newProduct = new ProductoDAOImp();
-                newProduct.updateCode(newProductCode, newCod);
+                newProduct.actulaizarCodigo(newProductCode, newCod);
                 System.out.println(Color.GREEN + "Cambiado exitosamente" + Color.DEFAULT);
                 cambioCodigoProducto = false;
             } else {
@@ -181,7 +181,7 @@ public class GestionProductos {
         String newName = scan.nextLine();
 
         var newProduct = new ProductoDAOImp();
-        newProduct.updateName(newProductCode, newName);
+        newProduct.actualizarNombre(newProductCode, newName);
         System.out.println(Color.GREEN + "Nombre cambiado exitosamente" + Color.DEFAULT);
 
         //para volver a la pantalla de producto
@@ -226,12 +226,12 @@ public class GestionProductos {
             productPrice = Double.parseDouble(newCod);
 
         } catch (NumberFormatException e) {
-            System.err.println("Error - solo se acepta dobles\n");
+            System.out.println(Color.ERROR + "Error -no es un dato valido \n" + Color.DEFAULT);
             validFormat = false;
         }
 
         var newProduct = new ProductoDAOImp();
-        newProduct.updatePrice(newProductCode, productPrice);
+        newProduct.actualiarPrecio(newProductCode, productPrice);
 
         System.out.println(Color.GREEN + "Precio cambiado exitosamente" + Color.DEFAULT);
 

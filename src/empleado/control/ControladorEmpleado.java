@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ControladorEmpleado {
 
-    public List<Empleado> leerEmpleados() {
+    public List<Empleado> readEmpleados() {
         EmpleadoDAO edao = new EmpleadoDAOImp();
         return edao.leerEmpleados();
     }

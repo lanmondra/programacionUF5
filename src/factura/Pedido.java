@@ -152,7 +152,7 @@ public class Pedido {
                 }
 
                 int aux = 0;
-                if (Escodigovalido(codigoEntrada) && noEstaEnCesta(codigoEntrada)) {
+                if (EsCodigoValido(codigoEntrada) && EstaEnLaCesta(codigoEntrada)) {
 
                     for (int i = 0; i < listaCompletaDeProductosList.size(); i++) {
 
@@ -173,7 +173,7 @@ public class Pedido {
 
                     }
 
-                } else if (!Escodigovalido(codigoEntrada)) {
+                } else if (!EsCodigoValido(codigoEntrada)) {
                     System.err.println("No existe ese codigo de producto");
                 }
 
@@ -186,7 +186,7 @@ public class Pedido {
 
     }
 
-    private boolean Escodigovalido(int codigoEntrada) {
+    private boolean EsCodigoValido(int codigoEntrada) {
         boolean seguir = false;
         try {
 
@@ -208,7 +208,7 @@ public class Pedido {
 
     }
 
-    private boolean noEstaEnCesta(int codigoEntrada) {
+    private boolean EstaEnLaCesta(int codigoEntrada) {
         boolean seguir = true;
 
         for (int i = 0; i < ProductList.size(); i++) {

@@ -9,8 +9,7 @@ import empleado.errores.passwordIncorrectException;
 import empleado.errores.userIncorrectException;
 import factura.Pedido;
 import util.Color;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import tienda.control.GestionTienda;
 
 public class GestionEmpleados {
@@ -31,7 +30,7 @@ public class GestionEmpleados {
         boolean esPasswordValido = false;
 
         System.out.println(Color.BLUE + "\tBienvenido a la tienda");
-        System.out.println(Color.BLUE + "***************************************" + Color.DEFAULT);
+        System.out.println("***************************************" + Color.DEFAULT);
         System.out.print("Introduce el código de tu usuario: ");
         while (!leerTeclado.hasNextInt()) {
             System.out.println(Color.ERROR + "Debe escribir un valor numérico" + Color.DEFAULT);
@@ -73,7 +72,7 @@ public class GestionEmpleados {
 
         boolean next = true;
         while (next) {
-            System.out.println("\nEntre la contraseña actual de : " + empleado.getNombre());
+            System.out.println(Color.BLUE + "\nEntre la contraseña actual de : " + empleado.getNombre() + Color.DEFAULT);
 
             String password = scan.next();
 

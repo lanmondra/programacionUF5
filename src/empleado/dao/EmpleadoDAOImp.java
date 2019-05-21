@@ -27,7 +27,7 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
 
         List<Empleado> employeesList = new ArrayList<Empleado>();
 
-        try (var reader = Files.newBufferedReader(path)) {
+        try ( var reader = Files.newBufferedReader(path)) {
 
             int employeeAccessCode = 0;
             String employeeName = null;
@@ -76,7 +76,7 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
         Number numero;
         String liniaconDatos;
 
-        try (var archivo = Files.newBufferedReader(Paths.get(archivoEmple))) {
+        try ( var archivo = Files.newBufferedReader(Paths.get(archivoEmple))) {
 
             while (archivo.readLine() != null) {
 
@@ -118,7 +118,7 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
         Number numero;
         String liniaconDatos;
 
-        try (var archivo = Files.newBufferedReader(Paths.get(archivoEmple))) {
+        try ( var archivo = Files.newBufferedReader(Paths.get(archivoEmple))) {
 
             while (archivo.readLine() != null) {
 
@@ -185,15 +185,8 @@ public class EmpleadoDAOImp implements EmpleadoDAO {
 
         String productListString = "";
         for (Empleado i : this.empleados) {
-            productListString
-                    += "[empleado]"
-                    + "\n [codigo]\n "
-                    + i.getCodigo()
-                    + "\n [nombre]\n "
-                    + i.getNombre()
-                    + "\n [apellidos]\n "
-                    + i.getApellidos()
-                    + "\n [contraseña]\n "
+            productListString = "[empleado]" + "\n [codigo]\n " + i.getCodigo() + "\n [nombre]\n "
+                    + i.getNombre() + "\n [apellidos]\n " + i.getApellidos() + "\n [contraseña]\n "
                     + i.getPassword()
                     + "\n";
         }

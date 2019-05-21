@@ -132,7 +132,7 @@ public class ProductoDAOImp implements ProductoDAO {
         this.products = products;
     }
 
-    public void updateCode(int productCode, int productNewCode) {
+    public void actulaizarCodigo(int productCode, int productNewCode) {
         Producto product = new Producto();
 
         for (int i = 0; i < this.products.size(); i++) {
@@ -147,7 +147,7 @@ public class ProductoDAOImp implements ProductoDAO {
         this.escribirEnArchivo();
     }
 
-    public void updateName(int productCode, String nuwvoNombre) {
+    public void actualizarNombre(int productCode, String nuwvoNombre) {
 
         Producto product = new Producto();
         for (int i = 0; i < this.products.size(); i++) {
@@ -176,7 +176,7 @@ public class ProductoDAOImp implements ProductoDAO {
         }
     }
 
-    public void updatePrice(int productCode, double productPrice) {
+    public void actualiarPrecio(int productCode, double productPrice) {
         Producto product = new Producto();
         for (int i = 0; i < this.products.size(); i++) {
             if (this.products.get(i).getCodigo() == productCode) {

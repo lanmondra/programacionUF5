@@ -6,7 +6,7 @@
  [apellidos]
  Blue
  [contraseña]
- 1234
+ 2010
 [empleado]
  [codigo]
  112
